@@ -8,16 +8,14 @@ def responder_ia(
     if historial is None:
         historial = []
 
-    prompt_sistema = (
-        "Eres un asistente virtual especializado en análisis de reseñas"
-        " turísticas.\nResponde a la pregunta del usuario utilizando"
-        " ÚNICAMENTE la información proporcionada en el Contexto.\nSi la"
-        " respuesta no está en el contexto, di 'No dispongo de suficiente"
-        " información en las reseñas para responder'."
-    )
+    prompt_sistema = """Eres un asistente virtual especializado en reseñas turisticas de viajes unicamente a España y Costa Rica. 
+    Tu unico objetivo es sugerir y describir los lugares segun lo que pida el usuario. 
+    Tus respuestas deben de basarse unicamente en lo que digan las siguientes reseñas en formato csv. 
+    Si la respuesta no se encuentra en las reseñas, debes de decir "No tengo sufiente informacion para contestar esa pregunta". 
+    No debes de contestar ningun tipo de preguntas que no esten relacionadas con las reseñas turisticas proporcionadas."""
 
     contenido_usuario = (
-        f"Contexto relevante:\n{contexto}\n\nPregunta: {pregunta}"
+        f"Reseñas:\n{contexto}\n\nPregunta: {pregunta}"
     )
 
     try:

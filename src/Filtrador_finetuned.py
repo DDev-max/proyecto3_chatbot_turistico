@@ -2,11 +2,11 @@ import pandas as pd
 from transformers import pipeline
 
 class Filtrador_finetuned:
-    def __init__(self, ruta_polaridad="../models/modelo_distilbeto_resenias", ruta_categorias="../models/modelo_categorias_distilbeto"):
+    def __init__(self, ruta_polaridad=r"C:\Users\Yo\Desktop\final-textos\models\modelo_distilbeto_resenias", ruta_categorias=r"C:\Users\Yo\Desktop\final-textos\models\modelo_categorias_distilbeto"):
         self.polarizador = pipeline("text-classification", model=ruta_polaridad, tokenizer=ruta_polaridad)
         self.clasificador = pipeline("text-classification", model=ruta_categorias, tokenizer=ruta_categorias)
 
-    def procesar(self, pregunta, resultados_faiss, ruta_metadata="../data/5k_metadata.csv"):
+    def procesar(self, pregunta, resultados_faiss, ruta_metadata=r"C:\Users\Yo\Desktop\final-textos\data\5k_metadata.csv"):
         pregunta_polaridad = self.polarizador(pregunta)
         pregunta_lugar = self.clasificador(pregunta)
 
@@ -62,4 +62,4 @@ class Filtrador_finetuned:
             how='right'
         )
 
-        return df_metadata
+        return df_metadata, [pred_pol, pred_lug]

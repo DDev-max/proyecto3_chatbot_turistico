@@ -5,8 +5,8 @@ import pandas as pd
 def buscar_en_estrategia(
     pregunta, nombre_estrategia, modelo, top_k=2
 ):
-  embeddings = np.load(f'embeddings_{nombre_estrategia}.npy')
-  metadata = pd.read_csv(f'metadata_chunks_{nombre_estrategia}.csv')
+  embeddings = np.load(f'C:/Users/Yo/Desktop/final-textos/models/embeddings_{nombre_estrategia}.npy')
+  metadata = pd.read_csv(f'C:/Users/Yo/Desktop/final-textos/models/metadata_chunks_{nombre_estrategia}.csv')
 
   dimension = embeddings.shape[1]
   indice = faiss.IndexFlatL2(dimension) 

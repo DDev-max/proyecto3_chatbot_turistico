@@ -1,0 +1,301 @@
+/* ============================================================
+   Chatbot de Reseñas Turísticas - Estilos
+   Coloca tu imagen de fondo en assets/fondo.jpg
+   ============================================================ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---------- Fondo con imagen + degradado encima ---------- */
+#fondo-principal {
+    min-height: 100vh;
+    width: 100%;
+    background-image:
+        linear-gradient(135deg, rgba(76, 29, 149, 0.75), rgba(219, 39, 119, 0.55), rgba(6, 182, 212, 0.6)),
+        url('/assets/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+/* Capa semi-transparente para que todo el contenido sea legible */
+.overlay-oscuro {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* ---------- Encabezado ---------- */
+.header {
+    text-align: center;
+    padding: 22px 16px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #ff6b6b, #f7b733, #6a67ce, #17ead9);
+    background-size: 300% 300%;
+    animation: moverGradiente 10s ease infinite;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+@keyframes moverGradiente {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.titulo {
+    color: white;
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.subtitulo {
+    color: rgba(255,255,255,0.92);
+    margin: 6px 0 0 0;
+    font-size: 0.95rem;
+}
+
+/* ---------- Panel de metadatos ---------- */
+.panel-metadata {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.metadata-columna {
+    flex: 1 1 300px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.metadata-columna h3 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.caja-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.caja-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.caja-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+}
+
+.placeholder-metadata {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* -- items de contexto (reseñas) -- */
+.item-contexto {
+    background: rgba(255,255,255,0.10);
+    border-left: 3px solid #17ead9;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+}
+
+.nombre-lugar {
+    display: block;
+    font-weight: 600;
+    color: #ffe082;
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+}
+
+.texto-chunk {
+    margin: 0;
+    color: white;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+/* -- items de categoría (label/score) -- */
+.item-categoria {
+    margin-bottom: 12px;
+}
+
+.fila-categoria-superior {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.etiqueta-categoria {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.valor-categoria {
+    color: #ffe082;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.barra-fondo {
+    width: 100%;
+    height: 8px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.18);
+    overflow: hidden;
+}
+
+.barra-relleno {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff6b6b, #f7b733, #17ead9);
+    transition: width 0.4s ease;
+}
+
+/* ---------- Panel de configuración (dropdown modelo) ---------- */
+.panel-config {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 14px 16px;
+}
+
+.config-item {
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.config-item.oculto {
+    display: none;
+}
+
+.label-config {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.dropdown-modelo .Select-control,
+.dropdown-modelo > div {
+    border-radius: 10px !important;
+}
+
+.input-api-key {
+    border-radius: 10px;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+/* ---------- Ventana de chat ---------- */
+.ventana-chat {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 18px;
+    padding: 16px;
+    min-height: 320px;
+    max-height: 460px;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.contenedor-mensajes {
+    display: flex;
+    flex-direction: column;
+}
+
+.burbuja-usuario, .burbuja-bot {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.burbuja-usuario {
+    background: linear-gradient(135deg, #6a67ce, #17ead9);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.burbuja-bot {
+    background: linear-gradient(135deg, #ff6b6b, #f7b733);
+    color: white;
+    border-bottom-left-radius: 4px;
+}
+
+.etiqueta-burbuja {
+    font-size: 0.7rem;
+    font-weight: 700;
+    opacity: 0.85;
+    margin-bottom: 3px;
+}
+
+.texto-burbuja {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* ---------- Panel de entrada ---------- */
+.panel-entrada {
+    display: flex;
+    gap: 10px;
+}
+
+.input-pregunta {
+    flex: 1;
+    border: none;
+    border-radius: 24px;
+    height: 3rem;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.boton-enviar {
+    border: none;
+    border-radius: 24px;
+    padding: 12px 22px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff6b6b, #6a67ce);
+    background-size: 200% 200%;
+    transition: background-position 0.4s ease, transform 0.15s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.boton-enviar:hover {
+    background-position: 100% 0%;
+    transform: translateY(-1px);
+}
+
+.boton-enviar:active {
+    transform: translateY(0);
+}
